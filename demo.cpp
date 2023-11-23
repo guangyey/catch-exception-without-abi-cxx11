@@ -3,6 +3,11 @@
 #include <iostream>
 
 int main() {
+#ifdef _GLIBCXX_USE_CXX11_ABI
+  std::cout << "is_cxx11_abi: " << (_GLIBCXX_USE_CXX11_ABI != 0) << std::endl;;
+#else
+  std::cout << "is_cxx11_abi: 1" << std::endl; 
+#endif
   std::vector<sycl::device> root_devices;
   auto platform_list = sycl::platform::get_platforms();
   // Enumerated GPU devices from GPU platform firstly.
